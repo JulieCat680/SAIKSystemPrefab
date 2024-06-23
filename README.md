@@ -24,8 +24,8 @@ The SAIKCore prefab makes up the core of the control system. After adding it to 
 **SetControlFrame**
 | Parameter          |                   |
 | ------------------ | ----------------- |
-| controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                         |
-| controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all users. |
+| controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                              |
+| controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all user types. |
 
 Data Transmission
 =================
