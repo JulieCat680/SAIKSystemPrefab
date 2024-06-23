@@ -11,7 +11,7 @@ Controller Interface
 The SAIKCore prefab makes up the core of the control system. After adding it to your interactable object, you will need to initialize it by calling the following functions from your interactable control script's Start function:
 
 **SetDriverCallback** 
-- **driver** : The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script (this)
+- **driver** : The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script
 - **executeCallback** : Name of a public function that will compute and supply IK limb parameters
 - **attachedCallback** : Name of a public function to be called when a player or model is connected to the SAIKController
 - **detachedCallback** : Name of a public function to be called when a player or model is disconnected from the SAIKController
