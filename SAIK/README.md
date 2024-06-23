@@ -36,7 +36,7 @@ Credits
 
 - SAIK system prefab and assets by HardLight680
 - Demo assets and prefabs by VowganVR:
--- Insight Camera System
--- Gun Turret Model
--- UFO Model
--- Environment Models
+  - Insight Camera System
+  - Gun Turret Model
+  - UFO Model
+  - Environment Models
