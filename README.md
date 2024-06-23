@@ -13,15 +13,19 @@ Controller Interface
 The SAIKCore prefab makes up the core of the control system. After adding it to your interactable object, you will need to initialize it by calling the following functions from your interactable control script's Start function:
 
 **SetDriverCallback** 
-- **driver** : The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script
-- **executeCallback** : Name of the public callback function to compute IK and supply limb parameters back to the core controller.
-- **attachedCallback** : Name of the public callback function to be called when a player or model is connected to the SAIKController
-- **detachedCallback** : Name of the public callback function to be called when a player or model is disconnected from the SAIKController
-- **resetCallback** : Name of the public callback function to be called when the SAIKController has finished recomputing the avatar's limb rotation characteristics and is ready to start posing the model.
+| Parameter        |                   |
+| ---------------- | ----------------- |
+| driver           | The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script.                                               |
+| executeCallback  | Name of the public callback function to compute IK and supply limb parameters back to the core controller.                                                                            |
+| attachedCallback | Name of the public callback function to be called when a player or model is connected to the SAIKController.                                                                          |
+| detachedCallback | Name of the public callback function to be called when a player or model is disconnected from the SAIKController.                                                                     |
+| resetCallback    | Name of the public callback function to be called when the SAIKController has finished recomputing the avatar's limb rotation characteristics and is ready to start posing the model. |
 
 **SetControlFrame**
-- **controlFrame** : The transform that the player's model will be positioned at - effectively the station position.
-- **controlFrameHeight** : An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all users.
+| Parameter          |                   |
+| ------------------ | ----------------- |
+| controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                         |
+| controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all users. |
 
 Data Transmission
 =================
