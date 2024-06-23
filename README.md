@@ -11,15 +11,15 @@ This prefab has intergrations with the VRChat Client Sim and can be previewed in
 Live demo world for this prefab is available here:
 https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
 
-Controller Interface
+Prefab: SAIKCore
 ====================
-The SAIKCore prefab makes up the core of the control system. After adding it to your interactable object, you will need to initialize it by calling the following functions from your interactable control script's Start function:
+The core controller module for the SAIK system. Responsible for measuring avatar rotation characteristics and transmitting computed IK pose data from Udon into the station animator. Not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
 
 **SetDriverCallback** 
 | Parameter        |                   |
 | ---------------- | ----------------- |
-| driver           | The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script.                                               |
-| executeCallback  | Name of the public callback function to compute IK and supply limb parameters back to the core controller.                                                                            |
+| driver           | The target of the custom event functions supplied in this parameter list. This is usually your custom controller script.                                                              |
+| executeCallback  | Name of the public callback function that is responsible for computing IK and supplying limb parameters back to the core controller.                                                  |
 | attachedCallback | Name of the public callback function to be called when a player or model is connected to the SAIKController.                                                                          |
 | detachedCallback | Name of the public callback function to be called when a player or model is disconnected from the SAIKController.                                                                     |
 | resetCallback    | Name of the public callback function to be called when the SAIKController has finished recomputing the avatar's limb rotation characteristics and is ready to start posing the model. |
@@ -30,15 +30,36 @@ The SAIKCore prefab makes up the core of the control system. After adding it to 
 | controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                              |
 | controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all user types. |
 
+Prefab: SAIKAvatarInfoCache
+===========================
+An optional utility prefab that allows avatar information to be cached.
+
+When a player first enters into a SAIK controlled station, the station must measure the limb rotation characteristics of the avatar. This manifests as a momentary flurry of motion before the avatar settles into the station. By using the SAIKAvatarInfoCache, the measurements taken from one station can be used for all other stations in the world without needing to re-measure the avatar. This lasts until the player changes or resets their avatar after which the cache is invalidated. Once this happens, the avatar must be measured again the next time the player enters into a SAIK station.
+
+Simply placing this prefab into the world will allow it to be used by all SAIKCoreController instances in the world.
+
+Prefab: SAIKVRHandle
+====================
+A utility prefab that is setup to simplify pickup-based IK interactables.
+
+For reasons discussed below in the Technical Limitations section, IK data for VR users cannot be computed remotely on other VRChat clients and instead must be synced across the network. The sync rate of this data is faster than the typical VRC_ObjectSync or Udon Sync data rate, so this makes it difficult to properly sync up the IK placement of the VR user's hands with a separate VRC_ObjectSync or Udon Synced object. The exception this are pickups. Pickups held by players are synced at the same higher rate that IK sync occurs at. By having the main interaction interface of an IK interaction be a pickup, it is possible to make the custom IK appear properly synced up with the interaction object for all clients.
+
+Controller scripts using SAIKVRHandle objects should call Init on them in their Start function. This function takes parameters to supply callbacks to the control script for when handle is picked up and dropped.
+
 Data Transmission
 =================
 More info coming soon.
 
-Limitations
+Technical Limitations
 ===========
-The transmission bus between the SAIKCoreController script and the avatar's animator is limited to 72 bits of information per update (plus some additional control flags). The default data transmission mode sends these bits as 8 distinct 9-bit fixed-point decimal values. This is enough to fully pose one limb (shoulder, arm, elbow, wrist), or partially pose 2 limbs at once (arm, elbow). For more complex posing, it is possible to pose multiple limbs in sequence, but this comes at the cost of visual smoothness and may make the IK look jittery or imperfect.
+The transmission bus between the SAIKCoreController Udon script and the avatar's animator is limited to 72 bits of information per update (plus some additional control flags). The default data transmission mode sends these bits as 8 distinct 9-bit fixed-point decimal values. This is enough to fully pose one limb (shoulder, arm, elbow, wrist), or partially pose 2 limbs at once (arm, elbow). For more complex posing, it is possible to pose multiple limbs in a rotating sequence, but this comes at the cost of visual smoothness and may make the IK look jittery or imperfect.
 
-Because rotation values are sent to the animator as 9-bit values, there is a limit to the amount of precision that can be represented in the pose data. As a result, there will be a small amount of visual stutter as the limb snaps between these quantized thresholds.
+Because rotation values are sent to the animator as 9-bit values, there is a limit to the amount of precision that can be represented in the pose data. As a result, there will be a small amount of visual stutter as the limb snaps between these 
+quantized thresholds.
+
+Data transmission from the SAIKCoreController Udon script into the avatar's animator occurs via the VelocityX, VelocityY, and VelocityZ animator parameters. For desktop users, these parameters can be set by any client and observed locally with the provided values set for that client. For VR users, these values can only be set by the owner client with the values set by the owner being transmitted across the network to other clients. This transmission across the network incurs significant latency and may make it difficult to properly sync up the custom IK limb positions with a given IK target. See the Prefab: SAIKVRHandle section for one possible approach to mitigating this issue.
+
+Due to an irregularity with how desktop users rotate inside stations, desktop users cannot have any head tracking enabled while inside a SAIK station. It may still technically be possible to indirectly control the head rotation via the SAIK engine, but doing so will be at the cost of consuming additional bits from the 72-bit transmission bus.
 
 Credits
 =======
