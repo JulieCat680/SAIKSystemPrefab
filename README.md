@@ -14,10 +14,10 @@ The SAIKCore prefab makes up the core of the control system. After adding it to 
 
 **SetDriverCallback** 
 - **driver** : The target of the custom event functions supplied in this parameter list. This is usually your interactable object's controller script
-- **executeCallback** : Name of a public function that will compute and supply IK limb parameters
-- **attachedCallback** : Name of a public function to be called when a player or model is connected to the SAIKController
-- **detachedCallback** : Name of a public function to be called when a player or model is disconnected from the SAIKController
-- **resetCallback** : Name of a public function to be called when the SAIKController has finished recomputing the avatar's pose characteristics and is ready to start posing the model.
+- **executeCallback** : Name of the public callback function to compute IK and supply limb parameters back to the core controller.
+- **attachedCallback** : Name of the public callback function to be called when a player or model is connected to the SAIKController
+- **detachedCallback** : Name of the public callback function to be called when a player or model is disconnected from the SAIKController
+- **resetCallback** : Name of the public callback function to be called when the SAIKController has finished recomputing the avatar's limb rotation characteristics and is ready to start posing the model.
 
 **SetControlFrame**
 - **controlFrame** : The transform that the player's model will be positioned at - effectively the station position.
