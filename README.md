@@ -8,6 +8,9 @@ See the GunTurret Demo for a complete example of how to implement this prefab in
 
 This prefab has intergrations with the VRChat Client Sim and can be previewed in the editor using the default Client Sim robot avatar.
 
+Live demo world for this prefab is available here:
+https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
+
 Controller Interface
 ====================
 The SAIKCore prefab makes up the core of the control system. After adding it to your interactable object, you will need to initialize it by calling the following functions from your interactable control script's Start function:
