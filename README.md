@@ -43,7 +43,9 @@ Prefab: SAIKAvatarInfoCache
 ===========================
 An optional utility prefab that allows avatar information to be cached.
 
-When a player first enters into a SAIK controlled station, the station must measure the limb rotation characteristics of the avatar. This manifests as a momentary flurry of motion before the avatar settles into the station. By using the SAIKAvatarInfoCache, the measurements taken from one station can be used for all other stations in the world without needing to re-measure the avatar. This lasts until the player changes or resets their avatar after which the cache is invalidated. Once this happens, the avatar must be measured again the next time the player enters into a SAIK station.
+When a player first enters into a SAIK controlled station, the station must measure the limb rotation characteristics of the avatar. This manifests as a momentary flurry of motion before the avatar settles into the station.
+
+By using the SAIKAvatarInfoCache, the measurements taken from one station can be used for all other stations in the world without needing to re-measure the avatar. This lasts until the player changes or resets their avatar after which the cache is invalidated. Once this happens, the avatar must be measured again the next time the player enters into a SAIK station.
 
 Simply placing this prefab into the world will allow it to be used by all SAIKCoreController instances in the world.
 
@@ -51,7 +53,9 @@ Prefab: SAIKVRHandle
 ====================
 A utility prefab that is setup to simplify pickup-based IK interactables.
 
-For reasons discussed below in the Technical Limitations section, IK data for VR users cannot be computed remotely on other VRChat clients and instead must be synced across the network. The sync rate of this data is faster than the typical VRC_ObjectSync or Udon Sync data rate, so this makes it difficult to properly sync up the IK placement of the VR user's hands with a separate VRC_ObjectSync or Udon Synced object. The exception this are pickups. Pickups held by players are synced at the same higher rate that IK sync occurs at. By having the main interaction interface of an IK interaction be a pickup, it is possible to make the custom IK appear properly synced up with the interaction object for all clients.
+For reasons discussed below in the Technical Limitations section, IK data for VR users cannot be computed remotely on other VRChat clients and instead must be synced across the network. The sync rate of this data is faster than the typical VRC_ObjectSync or Udon Sync data rate, so this makes it difficult to properly sync up the IK placement of the VR user's hands with a separate VRC_ObjectSync or Udon Synced object.
+
+The exception to the above are pickups. Pickups held by players are synced at the same higher rate that IK sync occurs at. By having the main interaction interface of an IK interaction be a pickup, it is possible to make the custom IK appear properly synced up with the interaction object for all clients.
 
 Controller scripts using SAIKVRHandle objects should call Init on them in their Start function. This function takes parameters to supply callbacks to the control script for when handle is picked up and dropped.
 
