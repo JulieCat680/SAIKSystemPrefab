@@ -30,7 +30,7 @@ The core controller module for the SAIK system. Responsible for measuring avatar
 | controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                              |
 | controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all user types. |
 
-Other usefuly functions that you may wish to call on this script are from your control script are:
+Other functions that you may wish to call from your control script:
 
 | Function                              |                   |
 | ------------------------------------- | ----------------- |
