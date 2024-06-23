@@ -2,6 +2,8 @@ Station Animator IK v1.0
 ========================
 A VRChat prefab for creating custom in-world IK interactions compatible with most VRChat humanoid SDK3 avatars. It can be used for vehicle steering, airplane cockpit controls, mounted turrets, or other station-based interactions.
 
+The git repo of this package does not contain any of the demo scene assets. Please install via the provided Unity package to view those scenes
+
 See the GunTurret Demo for a complete example of how to implement this prefab into your own project.
 
 This prefab has intergrations with the VRChat Client Sim and can be previewed in the editor using the default Client Sim robot avatar.
