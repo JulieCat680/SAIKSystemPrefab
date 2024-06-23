@@ -30,6 +30,15 @@ The core controller module for the SAIK system. Responsible for measuring avatar
 | controlFrame       | The transform that the player's model will be positioned at - effectively the station position.                                                                                              |
 | controlFrameHeight | An additional elevation offset to apply to the station for desktop and 3-point tracking VR users. This is used to make the 'entry' position of the station consistent across all user types. |
 
+Other usefuly functions that you may wish to call on this script are from your control script are:
+
+| Function                              |                   |
+| ------------------------------------- | ----------------- |
+| TryAttachPlayer                       | Attempts to load a player into the SAIK station. This is not guaranteed to happen if another client claims the station first or the station is already occupied. Listen on the attachedCallback to determine whether this succeds or not. |
+| TryAttachAnimator                     | Attempts to load a static Animator model into the SAIK station. This may be useful for in-editor testing. Can fail if the station is already occupied                 |
+| SetImmobilizeView                     | Sets whether desktop users can rotate their view left and right when they are in the station. Changes will only take effect the next time someone enters the station. |
+| SetTransmission (None/BitPack/Direct) | Sets the data transmission value to be sent to the avatar's animator next update. See the Data Transmission section for more info.                                    |
+
 Prefab: SAIKAvatarInfoCache
 ===========================
 An optional utility prefab that allows avatar information to be cached.
