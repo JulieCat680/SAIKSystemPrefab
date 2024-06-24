@@ -12,12 +12,12 @@ https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
 <img src="https://raw.githubusercontent.com/JulieCat680/SAIKSystemPrefab/main/_ReadmeImages/SAIK_GunTurretDemo.gif" width="40%"/>
 
 ## Prefab: SAIKCore
-The core controller module for the SAIK system. Responsible for measuring avatar rotation characteristics and transmitting computed IK pose data from Udon into the station animator. Not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
+The core controller module for the SAIK system. Responsible for measuring avatar limb rotation characteristics and transmitting computed IK pose data from Udon into the station animator. Not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
 
 **SetDriverCallback** 
 | Parameter        |                   |
 | ---------------- | ----------------- |
-| driver           | The target of the custom event functions supplied in this parameter list. This is usually your custom controller script.                                                              |
+| driver           | The target UdonBehaviour script to receive the callback event functions supplied in this parameter list. This is usually the custom controller script that is calling this function.  |
 | executeCallback  | Name of the public callback function that is responsible for computing IK and supplying limb parameters back to the core controller.                                                  |
 | attachedCallback | Name of the public callback function to be called when a player or model is connected to the SAIKController.                                                                          |
 | detachedCallback | Name of the public callback function to be called when a player or model is disconnected from the SAIKController.                                                                     |
