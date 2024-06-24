@@ -2,7 +2,7 @@
 
 A VRChat prefab for creating custom in-world IK interactions compatible with most VRChat humanoid SDK3 avatars. This prefab can be used for vehicle steering‚ airplane cockpit controls, mounted turrets, or other station-based interactions.
 
-The git repo of this package does not contain any of the demo scene assets. Please install via the provided Unity package to view those scenes
+The git repo of this package does not contain any of the demo models or assets. Please install via the provided Unity package to view those scenes or use the accompanying prefabs.
 
 See the GunTurret Demo for a complete example of how to implement this prefab into your own project.
 
