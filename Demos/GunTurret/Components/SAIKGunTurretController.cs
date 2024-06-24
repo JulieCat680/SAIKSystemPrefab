@@ -425,7 +425,7 @@ public class SAIKGunTurretController : UdonSharpBehaviour
         Transform rightTarget = null;
         if (m_VRHandlePickupR.Pickup.currentHand == VRC_Pickup.PickupHand.Right || (!m_useInput && Vector3.Distance(rightHandPos, m_VRHandleCenterR.position) < proximityL))
             rightTarget = m_IKTargetHandRR;
-        else if (m_VRHandlePickupR.Pickup.currentHand == VRC_Pickup.PickupHand.Right || (!m_useInput && Vector3.Distance(rightHandPos, m_VRHandleCenterL.position) < proximityR))
+        else if (m_VRHandlePickupL.Pickup.currentHand == VRC_Pickup.PickupHand.Right || (!m_useInput && Vector3.Distance(rightHandPos, m_VRHandleCenterL.position) < proximityR))
             rightTarget = m_IKTargetHandLR;
 
         // Apply IK to arms based on selected targets.
