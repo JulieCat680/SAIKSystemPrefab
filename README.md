@@ -6,7 +6,7 @@ The git repo of this package does not contain any of the demo models or assets. 
 
 See the GunTurret Demo for a complete example of how to implement this prefab into your own project.
 
-A publicly available demo world for this prefab is available to visit here:
+A publicly available demo world is available to visit here:
 https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
 
 <img src="https://raw.githubusercontent.com/JulieCat680/SAIKSystemPrefab/main/_ReadmeImages/SAIK_GunTurretDemo.gif" width="40%"/>
