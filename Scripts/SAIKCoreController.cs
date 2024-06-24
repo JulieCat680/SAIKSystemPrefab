@@ -129,7 +129,8 @@ public class SAIKCoreController : UdonSharpBehaviour
 
         // Center the player on the station to avoid weird offset issues.
         player.TeleportTo(ControlFrame.position, ControlFrame.rotation);
-
+        m_stationFrame.transform.position = ControlFrame.position;
+        m_stationFrame.transform.rotation = ControlFrame.rotation;
         m_stationFrame.Station.stationExitPlayerLocation = ControlFrame;
         m_stationFrame.UseStation(player);
     }
@@ -188,6 +189,7 @@ public class SAIKCoreController : UdonSharpBehaviour
 #endif
         }
 
+        // May be null if we ejected someone in the OnDestroy callback
         if (m_stationFrame != null)
             m_stationFrame.transform.parent = this.transform;
 
