@@ -1,14 +1,15 @@
 # Station Animator IK
-A VRChat prefab for creating custom in-world IK interactions compatible with most VRChat humanoid SDK3 avatars. It can be used for vehicle steering, airplane cockpit controls, mounted turrets, or other station-based interactions.
+
+A VRChat prefab for creating custom in-world IK interactions compatible with most VRChat humanoid SDK3 avatars. This prefab can be used for vehicle steering‚ airplane cockpit controls, mounted turrets, or other station-based interactions.
 
 The git repo of this package does not contain any of the demo scene assets. Please install via the provided Unity package to view those scenes
 
 See the GunTurret Demo for a complete example of how to implement this prefab into your own project.
 
-This prefab has intergrations with the VRChat Client Sim and can be previewed in the editor using the default Client Sim robot avatar.
-
 Live demo world for this prefab is available here:
 https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
+
+<img src="https://raw.githubusercontent.com/JulieCat680/SAIKSystemPrefab/main/_ReadmeImages/SAIK_GunTurretDemo.gif" width="40%"/>
 
 ## Prefab: SAIKCore
 The core controller module for the SAIK system. Responsible for measuring avatar rotation characteristics and transmitting computed IK pose data from Udon into the station animator. Not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
@@ -57,6 +58,10 @@ Controller scripts using SAIKVRHandle objects should call Init on them in their 
 
 ## Data Transmission
 More info coming soon.
+
+## In-Editor Testing
+
+This prefab has intergrations with the VRChat Client Sim and will apply itself to the default Client Sim robot avatar when entering into a station. You may also use the TryAttachAnimator function on the SAIKCoreController to attach an standard unity Animator-based humanoid model to the controller for testing purposes.
 
 ## Technical Limitations
 The transmission bus between the SAIKCoreController Udon script and the avatar's animator is limited to 72 bits of information per update (plus some additional control flags). The default data transmission mode sends these bits as 8 distinct 9-bit fixed-point decimal values. This is enough to fully pose one limb (shoulder, arm, elbow, wrist), or partially pose 2 limbs at once (arm, elbow). For more complex posing, it is possible to pose multiple limbs in a rotating sequence, but this comes at the cost of visual smoothness and may make the IK look jittery or imperfect.
