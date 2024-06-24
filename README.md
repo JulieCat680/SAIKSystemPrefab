@@ -72,7 +72,7 @@ Because rotation values are sent to the animator as 9-bit values, there is a lim
 quantized thresholds.
 
 ### Remote VR Player IK Delay
-Data transmission from the SAIKCoreController Udon script into the avatar's animator occurs via the VelocityX, VelocityY, and VelocityZ animator parameters. For desktop users, these parameters can be set by any client and observed locally with the provided values set for that client. For VR users, these values can only be set by the owner client with the values set by the owner being transmitted across the network to other clients. This transmission across the network incurs significant latency and may make it difficult to properly sync up the custom IK limb positions with a given IK target. See the Prefab: SAIKVRHandle section for one possible approach to mitigating this issue.
+Data transmission from the SAIKCoreController Udon script into the avatar's animator occurs via the VelocityX, VelocityY, and VelocityZ animator parameters. For desktop users, these parameters can be set by any client with the results being observable locally for the values provided by that client. For VR users, these values can only be set by the owner client with the values set by the owner being transmitted across the network to other clients. This transmission across the network incurs significant latency and may make it difficult to properly sync up the custom IK limb positions with a given IK target. See the Prefab: SAIKVRHandle section for one possible approach to mitigating this issue.
 
 To Summarize
 - **Desktop Player Observing Self:** IK is instant
