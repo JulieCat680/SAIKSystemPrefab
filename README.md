@@ -74,11 +74,11 @@ quantized thresholds.
 ### Remote VR Player IK Delay
 Data transmission from the SAIKCoreController Udon script into the avatar's animator occurs via the VelocityX, VelocityY, and VelocityZ animator parameters. For desktop users, these parameters can be set by any client and observed locally with the provided values set for that client. For VR users, these values can only be set by the owner client with the values set by the owner being transmitted across the network to other clients. This transmission across the network incurs significant latency and may make it difficult to properly sync up the custom IK limb positions with a given IK target. See the Prefab: SAIKVRHandle section for one possible approach to mitigating this issue.
 
-Put Simply:
-- Desktop Player Observing Self: IK is instant
-- VR Player Observing Self: IK is instant
-- Desktop Player Observed By Other: IK is instant (IK also gets computed on the observer client)
-- VR Player Observed By Other: IK has delay based on network conditions (IK is computed on the owner client and sent to the observer client)
+To Summarize
+- **Desktop Player Observing Self:** IK is instant
+- **VR Player Observing Self:** IK is instant
+- **Desktop Player Observed By Other:** IK is instant (because IK also gets computed on the observer client)
+- **VR Player Observed By Other:** IK has delay based on network conditions (IK is computed on the owner client and sent to the observer client)
 
 ### No Head Tracking For Desktop Users
 Due to an irregularity with how desktop users rotate inside stations, desktop users cannot have any head tracking enabled while inside a SAIK station. It may still technically be possible to indirectly control the head rotation via the SAIK engine, but doing so will be at the cost of consuming additional bits from the 72-bit transmission bus.
