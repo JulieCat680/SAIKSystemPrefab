@@ -33,7 +33,7 @@ Other functions that you may wish to call from your control script:
 
 | Function                              |                   |
 | ------------------------------------- | ----------------- |
-| TryAttachPlayer                       | Attempts to load a player into the SAIK station. This is not guaranteed to happen if another client claims the station first or the station is already occupied. Listen on the attachedCallback to determine whether this succeds or not. |
+| TryAttachPlayer                       | Attempts to load a player into the SAIK station. This is not guaranteed to happen if another client claims the station first or the station is already occupied. Listen on the attachedCallback to determine whether this succeeds or not. |
 | TryAttachAnimator                     | Attempts to load a static Animator model into the SAIK station. This may be useful for in-editor testing. Can fail if the station is already occupied                 |
 | SetImmobilizeView                     | Sets whether desktop users can rotate their view left and right when they are in the station. Changes will only take effect the next time someone enters the station. |
 | SetTransmission (None/BitPack/Direct) | Sets the data transmission value to be sent to the avatar's animator next update. See the Data Transmission section for more info.                                    |
