@@ -12,7 +12,7 @@ https://vrchat.com/home/world/wrld_0fad1508-b756-499b-b303-aba8df2949c6
 <img src="https://raw.githubusercontent.com/JulieCat680/SAIKSystemPrefab/main/_ReadmeImages/SAIK_GunTurretDemo.gif" width="40%"/>
 
 ## Prefab: SAIKCore
-The core controller module for the SAIK system. Responsible for measuring avatar limb rotation characteristics and transmitting computed IK pose data from Udon into the station animator. Not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
+The core controller module for the SAIK system. Responsible for measuring avatar limb rotation characteristics and transmitting computed IK pose data from Udon into the station animator. It is not normally used on its own. Instead, it should be used alongside a custom control script that controls how IK interaction should occur. The custom control script should call the following functions in its Start callback:
 
 **SetDriverCallback** 
 | Parameter        |                   |
