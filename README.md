@@ -107,6 +107,23 @@ As noted above, IK computation should occur during the executeCallback of your c
 
 Because limb placement is exclusively driven through Mecanim flex values sent via the station animator, it is necessary to convert the Quaternion rotations produced from your IK calculation into standardized Mecanim flex values. This is largely facilitated through the SAIKMecanimHelper class. It should be noted that the SAIKCore_DefaultIKAnimator limits these flex value to (-1,+1), so any rotation not representable by the model's Mecanim flex range will be truncated.
 
+## Moving the SAIK Station
+
+When designing vehicles or other moving stations that feature the SAIK system, it is important to consider when you intend to update the position of the SAIK ControlFrame and its IK targets.
+
+The following movement sources are compatible with the SAIK system:
+- Update (script execution order less than 10000)
+- FixedUpdate
+- RigidBody physics
+- An animator set to AnimatePhysics
+
+The following movement sources are incompatible with the SAIK system and will cause IK to lag behind its targets:
+- Update (script execution order greater than 10000)
+- LateUpdate
+- PostLateUpdate
+- Constraints
+- An animator set to AnimateUnscaledTime
+
 ## In-Editor Testing
 
 This prefab has intergrations with the VRChat Client Sim and will apply itself to the default Client Sim robot avatar when entering into a station. You may also use the TryAttachAnimator function on the SAIKCoreController to attach a standard Unity animator-based humanoid model to the controller for testing purposes.
