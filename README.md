@@ -111,13 +111,13 @@ Because limb placement is exclusively driven through Mecanim flex values sent vi
 
 When designing vehicles or other moving stations that feature the SAIK system, it is important to consider when you intend to update the position of the SAIK ControlFrame and its IK targets.
 
-The following movement sources are compatible with the SAIK system:
+The following movement sources happen before the IK update and will be properly matched by the IK pose computation:
 - Update (script execution order less than 10000)
 - FixedUpdate
 - RigidBody physics
 - An animator set to AnimatePhysics
 
-The following movement sources are incompatible with the SAIK system and will cause IK to lag behind its targets:
+The following movement sources happen after the IK update and will cause IK pose to lag behind its targets:
 - Update (script execution order greater than 10000)
 - LateUpdate
 - PostLateUpdate
