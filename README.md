@@ -60,7 +60,7 @@ Controller scripts using SAIKVRHandle objects should call Init on them in their 
 
 | Script                        |   |
 | ----------------------------- | - |
-| **SAIKAvatarInfo**            | A synced data store of avatar limb rotation characteristics for the owner's avatar. This is measured every time a player enters a SAIK station unless measurement data can be retrieved from a SAIKAvatarInfoCache.|
+| **SAIKAvatarInfo**            | A synced data store of avatar limb rotation characteristics for the owner's avatar. This is measured every time a player enters a SAIK station unless measurement data can be retrieved from a SAIKAvatarInfoCache. The data inside this data store is purged when the player leaves the SAIK station in order to minimize network load.|
 | **SAIKAvatarInfoCache**       | A per-player, unsynced cache copy of SAIKAvatarInfo data. As long as the player's avatar hasn't changed or been reset, this data will be copied into the SAIKAvatarInfo of the next SAIK station that the player enters.|
 | **SAIKAvatarInterface**       | A utility class that allows both player avatars and in-world animator models to be treated in roughly the same manner. Allows the SAIK system to work both with player avatars and standalone models.|
 | **SAIKCoreController**        | The core SAIK system script. Responsible for facilitating data transfer between Udon and the IK animator as well as triggering the measurement cycle needed to populate the SAIKAvatarInfo.|
