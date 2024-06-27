@@ -117,7 +117,7 @@ The following movement sources happen before the IK update and will be properly 
 - RigidBody physics
 - An animator set to the AnimatePhysics update mode
 
-The following movement sources happen after the IK update and will cause IK pose to lag behind its targets:
+The following movement sources happen after the IK update and will cause the IK pose to lag behind its targets:
 - Update (script execution order greater than 10000)
 - LateUpdate
 - PostLateUpdate
