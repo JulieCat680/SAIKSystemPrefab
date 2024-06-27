@@ -52,7 +52,7 @@ A utility prefab that is setup to simplify pickup-based IK interactables.
 
 For reasons discussed below in the Technical Limitations section, IK data for VR users cannot be computed remotely on other VRChat clients and instead must be synced across the network. The sync rate of this data is faster than the typical VRC_ObjectSync or Udon Sync data rate, so this makes it difficult to properly sync up the IK placement of the VR user's hands with a separate VRC_ObjectSync or Udon Synced IK target.
 
-The exception to the above are pickups. Pickups held by players are synced at the same higher rate that IK sync occurs at. By having the main interaction interface of an IK interaction be a pickup, it is possible to make the custom IK appear properly synced up with the interaction object for all clients.
+The exception to the above are pickups. Pickups held by players are synced at the same higher rate that IK sync occurs at. By having the main interaction interface of an IK interaction be a pickup, it is possible to make the custom IK appear properly synced up with the interaction IK target for all clients.
 
 Controller scripts using SAIKVRHandle objects should call Init on them in their Start function. This function takes parameters to supply callbacks to the control script for when handle is picked up and dropped.
 
